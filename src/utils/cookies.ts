@@ -40,3 +40,13 @@ export function clearAuthCookies(res:Response) {
         path : "/auth"
      } )
 }
+
+export function setAccessTokenCookies(res : Response , accessToken : string){
+    res.cookie("access_Token" , accessToken , {
+      httpOnly : true ,
+      secure : isProduction,
+      sameSite : "none",
+      path : "/",
+      maxAge : 15 * 60 * 1000
+    })
+}
